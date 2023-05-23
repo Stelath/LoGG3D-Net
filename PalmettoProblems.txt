@@ -1,0 +1,6 @@
+Also run ./config --prefix=/home/{username}/.local/bin/ for the Google Sparse Hash C++ Library https://github.com/sparsehash/sparsehash
+Then set the CPLUS_INCLUDE_PATH to be /home/{username}/.local/bin/include/ (export CPLUS_INCLUDE_PATH=/home/{username}/.local/bin/include/)
+
+Set CUDA_HOME env variable to export CUDA_HOME=/software/spackages/linux-rocky8-x86_64/gcc-9.5.0/cuda-11.6.2-er5txg5a4g3a7xzhmtvncdmgbzqcir2s/
+
+Install torchsparse with FORCE_CUDA=1 pip install --no-cache-dir git+https://github.com/mit-han-lab/torchsparse.git@v1.4.0

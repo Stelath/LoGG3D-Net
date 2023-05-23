@@ -18,9 +18,7 @@ def findNnPoseUsingTime(target_time, all_times, data_poses):
     return data_poses[nn_idx]
 
 
-sequences = ['KAIST/KAIST_01', 'KAIST/KAIST_02', 'KAIST/KAIST_03',
-             'DCC/DCC_01', 'DCC/DCC_02', 'DCC/DCC_03',
-             'Riverside/Riverside_01', 'Riverside/Riverside_02', 'Riverside/Riverside_03']
+sequences = ['Riverside/Riverside_02'] # Removed 'KAIST/KAIST_01', 'KAIST/KAIST_02', 'KAIST/KAIST_03', 'DCC/DCC_01', 'DCC/DCC_02', 'DCC/DCC_03', 'Riverside/Riverside_01', 'Riverside/Riverside_03' (alex)
 
 for sequence in sequences:
     sequence_path = basedir + sequence + '/Ouster/'
@@ -31,6 +29,7 @@ for sequence in sequences:
         data_poses = list(reader)
     data_poses_ts = np.asarray([int(t) for t in np.asarray(data_poses)[:, 0]])
 
+    print(f'Scan name length: {len(scan_names)}')
     for scan_name in scan_names:
         scan_time = int(scan_name.split('/')[-1].split('.')[0])
         scan_pose = findNnPoseUsingTime(scan_time, data_poses_ts, data_poses)
@@ -38,3 +37,5 @@ for sequence in sequences:
             posewriter = csv.writer(
                 csvfile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
             posewriter.writerow(scan_pose)
+    
+    print('Done with sequence: ' + sequence)

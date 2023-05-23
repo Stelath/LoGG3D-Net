@@ -69,14 +69,13 @@ data_arg.add_argument('--kitti_data_split', type=dict, default={
 })
 
 data_arg.add_argument('--mulran_dir', type=str,
-                      default='/mnt/088A6CBB8A6CA742/Datasets/MulRan/', help="Path to the MulRan dataset")
+                      default='/fastscratch/korte/LoGG3D/mulran/', help="Path to the MulRan dataset")
 data_arg.add_argument("--mulran_normalize_intensity", type=str2bool,
                       default=False, help="Normalize intensity return.")
 data_arg.add_argument('--mulran_data_split', type=dict, default={
-    'train': ['DCC/DCC_01', 'DCC/DCC_02',
-              'Riverside/Riverside_01', 'Riverside/Riverside_03'],
+    'train': [], # Removed 'DCC/DCC_01', 'DCC/DCC_02', 'Riverside/Riverside_01', 'Riverside/Riverside_03' (alex)
     'val': [],
-    'test': ['KAIST/KAIST_01']
+    'test': ['Riverside/Riverside_02']  # Changed from 'KAIST/KAIST_01' (ethan)
 })
 
 # Data loader configs
